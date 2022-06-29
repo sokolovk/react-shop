@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html {
+  font-size: 18px;
+}
+
+nav {
+  padding: 0 2rem;
+}
+
+main {
+  min-height: calc(100vh - 134px);
+  padding: 2.5rem 0;
+}
+
+.goods {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content {
+  flex-grow: 1;
+}
