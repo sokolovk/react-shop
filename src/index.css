@@ -31,6 +31,18 @@ main {
   grid-gap: 15px;
 }
 
+@media screen and (max-width: 1280px) {
+  .goods {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .goods {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -38,4 +50,19 @@ main {
 
 .card-content {
   flex-grow: 1;
+}
+
+.cart {
+  display: flex;
+  border-radius: 8px;
+  cursor: pointer;
+  position: fixed;
+  top: 4.5rem;
+  right: 2rem;
+  padding: .75rem;
+  transition: all .3s;
+}
+
+.cart.orange:hover {
+  background-color: #ffb74d !important;
 }

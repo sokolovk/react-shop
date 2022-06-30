@@ -1,11 +1,13 @@
 function GoodsItem(props) {
-    console.log(props)
+
     const  {
         id,
         name,
         description,
         images,
     } = props.granted[0];
+
+    const {addOrder} = props;
 
     const {
         finalPrice: price,
@@ -20,7 +22,11 @@ function GoodsItem(props) {
             <p>{description}</p>
         </div>
         <div className="card-action">
-            <button className='btn'>Buy</button>
+            <button className='btn' onClick={() => addOrder({
+                id,
+                name,
+                price
+            })}>Buy</button>
             <span className='right' style={{fontSize: '1.5rem'}}>{price}</span>
         </div>
     </div>
