@@ -3,11 +3,13 @@ import {API_KEY, API_URL} from "../config";
 import {Preloder} from "../components/preloder";
 import {GoodsList} from "../components/GoodsList";
 import {Cart} from "../components/Cart";
+import {BasketList} from "../components/BasketList";
 
 function Main() {
     const [goods, setGoods] = useState([]);
     const [loading, setLoading] = useState(true);
     const [order, setOrder] = useState([]);
+    const [isBasketShow, setBasketShow] = useState(false);
 
     function addOrder(item) {
         const itemIndex = order.findIndex(
@@ -28,9 +30,27 @@ function Main() {
                         quantity: orderItem.quantity + 1,
                     }
                 } else {
-                    return index;
+                    return orderItem;
                 }
             })
+            setOrder(newOrder);
+        }
+    }
+
+    function removeOrder(itemId)  {
+        const newOrder = order.filter(el => el.id !==itemId);
+        setOrder(newOrder);
+    }
+
+    const handleBasketShow = () => {
+        setBasketShow(!isBasketShow);
+
+        let overlay = document.querySelector('.overlay');
+
+        if(!isBasketShow) {
+            overlay.classList.add('active');
+        } else {
+            overlay.classList.remove('active');
         }
     }
 
@@ -52,10 +72,19 @@ function Main() {
     }, [])
 
     return <main className="container content">
-        <Cart quantity = {order.length} />
+        <Cart quantity = {order.length} handleBasketShow={handleBasketShow} />
         {
             loading ? <Preloder /> : <GoodsList goods={goods} addOrder={addOrder} />
         }
+        {
+            isBasketShow && (
+                <BasketList
+                    order={order}
+                    handleBasketShow={handleBasketShow}
+                    removeOrder={removeOrder}
+                /> )
+        }
+        <div className="overlay"></div>
     </main>
 }
 

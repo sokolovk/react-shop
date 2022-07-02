@@ -61,8 +61,41 @@ main {
   right: 2rem;
   padding: .75rem;
   transition: all .3s;
+  z-index: 4;
 }
 
 .cart.orange:hover {
   background-color: #ffb74d !important;
+}
+
+.basket-list {
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  max-width: 95%;
+  width: 40rem;
+  z-index: 3;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.overlay.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height:  100%;
+  width: 100%;
+}
+
+.basket-close {
+  position: absolute;
+  top: .6rem;
+  right: 1rem;
+  cursor: pointer;
+  color: #fff;
 }
