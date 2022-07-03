@@ -54,6 +54,39 @@ function Main() {
         }
     }
 
+    const incQuantity = (itemId) => {
+        const newOrder = order.map((el) => {
+            if(el.id === itemId) {
+                const newQuantity = el.quantity + 1;
+                return {
+                    ...el,
+                    quantity: newQuantity
+                };
+            } else {
+                return el;
+            }
+        });
+
+        setOrder(newOrder);
+    }
+
+    const decQuantity = (itemId) => {
+        const newOrder = order.map((el) => {
+            if(el.id === itemId) {
+                const newQuantity = el.quantity - 1;
+                console.log(newQuantity);
+                return {
+                    ...el,
+                    quantity: newQuantity >= 0 ? newQuantity : 0,
+                };
+            } else {
+                return el;
+            }
+        });
+
+        setOrder(newOrder);
+    }
+
     useEffect(function getGoods() {
         fetch(API_URL, {headers:
                 {
@@ -82,6 +115,8 @@ function Main() {
                     order={order}
                     handleBasketShow={handleBasketShow}
                     removeOrder={removeOrder}
+                    incQuantity={incQuantity}
+                    decQuantity={decQuantity}
                 /> )
         }
         <div className="overlay"></div>
