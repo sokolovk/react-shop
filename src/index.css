@@ -105,3 +105,22 @@ main {
   vertical-align: middle;
   color: #26a69a;
 }
+
+.order-button {
+  margin-top: -5px;
+}
+
+#toast-container {
+  top: 2rem !important;
+  animation: fade-in .35s ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
