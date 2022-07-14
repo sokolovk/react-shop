@@ -7,18 +7,19 @@ function BasketItem(props) {
         name,
         price,
         quantity,
-        removeOrder = Function.prototype,
-        incQuantity = Function.prototype,
-        decQuantity = Function.prototype
     } = props;
 
-    const {example} = useContext(ShopContext);
+    const {
+        removeFromBasket,
+        incQuantity,
+        decQuantity
+    } = useContext(ShopContext);
 
     return <li className="collection-item">
         {name}  <i className="material-icons basket-quantity" onClick={() => decQuantity(id)}>remove</i> x{quantity}
         <i className="material-icons basket-quantity" onClick={() => incQuantity(id)}>add</i>
         = {price * quantity}
-        <span className="secondary-content" onClick={() => removeOrder(id)}>
+        <span className="secondary-content" onClick={() => removeFromBasket(id)}>
             <i className="material-icons">close</i>
         </span>
     </li>
